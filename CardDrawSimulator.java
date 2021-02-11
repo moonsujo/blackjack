@@ -2,7 +2,7 @@
 
 import java.util.Random;
 
-public class DiceTossSimulator {
+public class CardDrawSimulator {
 
    private int totalTrialCount;
    private int doublesCount;
@@ -26,7 +26,7 @@ public class DiceTossSimulator {
    /**
       Creates a coin toss simulator with no trials done yet.
    */
-   public DiceTossSimulator() {
+   public CardDrawSimulator() {
       //initialize all private member variables 
       //create a generator that will give us our random number associated with a coinflip
       totalTrialCount = 0;

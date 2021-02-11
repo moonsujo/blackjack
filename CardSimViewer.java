@@ -4,7 +4,7 @@
 import javax.swing.JFrame;
 import java.util.Scanner;
 
-public class DiceSimViewer
+public class CardSimViewer
 {
    public static void main(String[] args)
    {
@@ -39,7 +39,7 @@ public class DiceSimViewer
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
    
       //call the coinsim component with the parameter as the number of trials that was previously inputed
-      DiceSimComponent component = new DiceSimComponent(trials);
+      CardSimComponent component = new CardSimComponent(trials);
       //add the component that was created above
       frame.add(component);
       
