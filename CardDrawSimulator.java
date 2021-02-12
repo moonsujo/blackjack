@@ -4,9 +4,9 @@ import java.util.Random;
 
 public class CardDrawSimulator {
 
-   private int totalTrialCount;
+   private int totalCardCount;
    private int doublesCount;
-   
+   private int aceCount;
    private int twoCount;
    private int threeCount;
    private int fourCount;
@@ -16,193 +16,182 @@ public class CardDrawSimulator {
    private int eightCount;
    private int nineCount;
    private int tenCount;
-   private int elevenCount;
-   private int twelveCount;
-   
-   
+   private int jackCount;
+   private int queenCount;
+   private int kingCount;
+
    private Random generator;
-   
-   
+
+
    /**
       Creates a coin toss simulator with no trials done yet.
    */
    public CardDrawSimulator() {
-      //initialize all private member variables 
+      //initialize all private member variables
       //create a generator that will give us our random number associated with a coinflip
-      totalTrialCount = 0;
+
       generator = new Random();
-      twoCount=0;
-      threeCount=0;
-      fourCount=0;
-      fiveCount=0;
-      sixCount=0;
-      sevenCount=0;
-      eightCount=0;
-      nineCount=0;
-      tenCount=0;
-      elevenCount=0;
-      twelveCount=0;
-      
-      doublesCount=0;
+
+      totalCardCount = 52;
+      aceCount=4; //1
+      twoCount=4; //2
+      threeCount=4;  //3
+      fourCount=4; ///4
+      fiveCount=4;//5
+      sixCount=4; //6
+      sevenCount=4; //7
+      eightCount=4; //8
+      nineCount=4; //9
+      tenCount=4; //10
+      jackCount=4; //11
+      queenCount=4; //12
+      kingCount=4; //13
+
+
    }
 
 
-   /**
-      Runs the simulation for numTrials more trials. Multiple calls to this method
-      without a reset() between them *add* these trials to the current simulation.
-      
-      @param numTrials  number of trials to for simulation; must be >= 1
-    */
-   public void run(int numTrials) 
+
+   public int draw()
    {
-      totalTrialCount = totalTrialCount + numTrials;
-      
-      for (int i = 1; i <= numTrials; i++) 
-      {
-         int diceResult1 = generator.nextInt(6)+1;
-         int diceResult2 = generator.nextInt(6)+1;
-         int diceSum = diceResult1 + diceResult2;
-         
-         if (diceResult1 == diceResult2)
-         {
-            doublesCount++;
-         }
-         
-         if (diceSum == 2)
-         {
-            twoCount++;
-         }
-         
-         if (diceSum == 3)
-         {
-            threeCount++;
-         }
-         
-         if (diceSum == 4)
-         {
-            fourCount++;
-         }
-         
-         if (diceSum == 5)
-         {
-            fiveCount++;
-         }
-         
-         if (diceSum == 6)
-         {
-            sixCount++;
-         }
-         
-         if (diceSum == 7)
-         {
-            sevenCount++;
-         }
-         
-         if (diceSum == 8)
-         {
-            eightCount++;
-         }
-         
-         if (diceSum == 9)
-         {
-            nineCount++;
-         }
-         
-         if (diceSum == 10)
-         {
-            tenCount++;
-         }
-         
-         if (diceSum == 11)
-         {
-            elevenCount++;
-         }
-         
-         if (diceSum == 12)
-         {
-            twelveCount++;
-         }
-      }
-      
+
+     int cardResult = generator.nextInt(13)+1;
+     totalCardCount--;
+     if (cardResult == 1)
+     {
+       aceCount--;
+     }
+     else if (cardResult == 2)
+     {
+       twoCount--;
+     }
+     else if (cardResult == 3)
+     {
+       threeCount--;
+     }
+     else if (cardResult == 4)
+     {
+       fourCount--;
+     }
+     else if (cardResult == 5)
+     {
+       fiveCount--;
+     }
+     else if (cardResult == 6)
+     {
+       sixCount--;
+     }
+     else if (cardResult == 7)
+     {
+       sevenCount--;
+     }
+     else if (cardResult == 8)
+     {
+       eightCount--;
+     }
+     else if (cardResult == 9)
+     {
+       nineCount--;
+     }
+     else if (cardResult == 10)
+     {
+       tenCount--;
+     }
+     else if (cardResult == 11)
+     {
+       jackCount--;
+     }
+     else if (cardResult == 12)
+     {
+       queenCount--;
+     }
+     else if (cardResult == 13)
+     {
+       kingCount--;
+     }
+     return cardResult;
+
    }
 
 
-   /**
-      Get number of trials performed since last reset.
-   */
-   public int getNumTrials() {
-      //return the number of trials that were run
-      return totalTrialCount;
+
+   public int getNumCards() {
+      //return the number of cards remaining
+      return totalCardCount;
    }
 
-   public int doublesCount() {
-      return doublesCount;   
+   public int aceCount() {
+      return aceCount;
    }
-
 
    public int twoCount() {
-      return twoCount; 
+      return twoCount;
    }
 
-   public int threeCount() {  
-      return threeCount; 
+   public int threeCount() {
+      return threeCount;
    }
-   
+
    public int fourCount() {
-	  return fourCount; 
+	  return fourCount;
    }
 
-   public int fiveCount() {  
-	  return fiveCount; 
-   } 
-   
+   public int fiveCount() {
+	  return fiveCount;
+   }
+
    public int sixCount() {
-	  return sixCount; 
+	  return sixCount;
    }
 
-   public int sevenCount() {  
-      return sevenCount; 
+   public int sevenCount() {
+      return sevenCount;
    }
-   
+
    public int eightCount() {
-	  return eightCount; 
+	  return eightCount;
    }
 
-   public int nineCount() {  
-	  return nineCount; 
+   public int nineCount() {
+	  return nineCount;
    }
 
-   public int tenCount() {  
-      return tenCount; 
-   }
-   
-   public int elevenCount() {
-	  return elevenCount; 
+   public int tenCount() {
+      return tenCount;
    }
 
-   public int twelveCount() {  
-	  return twelveCount; 
+   public int jackCount() {
+	  return jackCount;
    }
-   
+
+   public int queenCount() {
+	  return queenCount;
+   }
+
+   public int kingCount() {
+    return kingCount;
+   }
+
    /**
       Resets the simulation, so that subsequent runs start from 0 trials done.
     */
-   public void reset() 
+   public void reset()
    {
       //reseting all private member variables
-      totalTrialCount = 0;
-      twoCount=0;
-      threeCount=0;
-      fourCount=0;
-      fiveCount=0;
-      sixCount=0;
-      sevenCount=0;
-      eightCount=0;
-      nineCount=0;
-      tenCount=0;
-      elevenCount=0;
-      twelveCount=0;
-      doublesCount=0;
+      totalCardCount = 52;
+      aceCount=4;
+      twoCount=4;
+      threeCount=4;
+      fourCount=4;
+      fiveCount=4;
+      sixCount=4;
+      sevenCount=4;
+      eightCount=4;
+      nineCount=4;
+      tenCount=4;
+      jackCount=4;
+      queenCount=4;
+      kingCount=4;
    }
 
 }
