@@ -177,16 +177,18 @@ public class CardSimComponent extends JComponent
       int heightBuffer = 20;
       int width = 20;
 
-      int rowHeight = (getHeight() - (heightBuffer*4))/3;
+      int rowHeight = (getHeight() - (heightBuffer*6))/5;
 
       int bottomRow1 = heightBuffer + rowHeight;
       int bottomRow2 = (2 * heightBuffer) + (2*rowHeight);
       int bottomRow3 = (3 * heightBuffer) + (3*rowHeight);
+      int bottomRow4 = (4*(heightBuffer+rowHeight));
+      int bottomRow5 = (5*(heightBuffer+rowHeight));
       double scale = (rowHeight)*.01;
       //double scaleSecondRow
 
       //ace probability
-      int left = ((getWidth()/7)) - (width/2); //specifying x value of left side of bar
+      int left = (4*(getWidth()/7)) - (width/2); //specifying x value of left side of bar
       int barHeight = aceCountPercent; //two tails percent set to barheight
       Color color = Color.BLUE; //change color to blue
       String label1 = "Ace's Count: " + aceCount + " (" + aceCountPercent+ "%)";
@@ -195,7 +197,7 @@ public class CardSimComponent extends JComponent
 
       barAce.draw(g2);
 
-      left = ((2*getWidth()/7)) - (width/2); //specifying x value of left side of bar
+      left = ((5*getWidth()/7)) - (width/2); //specifying x value of left side of bar
       barHeight = twoCountPercent; //two tails percent set to barheight
       color = Color.BLUE; //change color to blue
       label1 = "Two's Count: " + twoCount + " (" + twoCountPercent+ "%)";
@@ -205,7 +207,7 @@ public class CardSimComponent extends JComponent
       bar2.draw(g2);
 
 
-      left = (3*(getWidth()/7)) - (width/2); //specifying x value of left side of bar
+      left = (6*(getWidth()/7)) - (width/2); //specifying x value of left side of bar
       barHeight = threeCountPercent; //two tails percent set to barheight
       color = Color.BLUE; //change color to blue
       label1 = "Three's Count: " + threeCount + " (" + threeCountPercent+ "%)";
@@ -220,7 +222,7 @@ public class CardSimComponent extends JComponent
       color = Color.BLUE; //change color to blue
       label1 = "Four's Count: " + fourCount + " (" + fourCountPercent+ "%)";
       //calling third bar to be drawn
-      Bar bar4 = new Bar(bottomRow1, left, width, barHeight, scale, color, label1);
+      Bar bar4 = new Bar(bottomRow2, left, width, barHeight, scale, color, label1);
 
       bar4.draw(g2);
 
@@ -230,7 +232,7 @@ public class CardSimComponent extends JComponent
       color = Color.BLUE; //change color to blue
       label1 = "Five's Count: " + fiveCount + " (" + fiveCountPercent+ "%)";
       //calling third bar to be drawn
-      Bar bar5 = new Bar(bottomRow1, left, width, barHeight, scale, color, label1);
+      Bar bar5 = new Bar(bottomRow2, left, width, barHeight, scale, color, label1);
 
       bar5.draw(g2);
 
@@ -239,39 +241,39 @@ public class CardSimComponent extends JComponent
       color = Color.BLUE; //change color to blue
       label1 = "Six's Count: " + sixCount + " (" + sixCountPercent+ "%)";
       //calling third bar to be drawn
-      Bar bar6 = new Bar(bottomRow1, left, width, barHeight, scale, color, label1);
+      Bar bar6 = new Bar(bottomRow2, left, width, barHeight, scale, color, label1);
 
       bar6.draw(g2);
 
       // ROW 2 -------------------------------------------------------------------
 
-      left = ((getWidth()/7)) - (width/2); //specifying x value of left side of bar
+      left = (4*(getWidth()/7)) - (width/2); //specifying x value of left side of bar
       barHeight = sevenCountPercent; //two tails percent set to barheight
       color = Color.BLUE; //change color to blue
       label1 = "Seven's Count: " + sevenCount + " (" + sevenCountPercent+ "%)";
       //calling third bar to be drawn
-      Bar bar7 = new Bar(bottomRow2, left, width, barHeight, scale, color, label1);
+      Bar bar7 = new Bar(bottomRow3, left, width, barHeight, scale, color, label1);
 
       bar7.draw(g2);
 
 
 
-      left = (2*(getWidth()/7)) - (width/2); //specifying x value of left side of bar
+      left = (5*(getWidth()/7)) - (width/2); //specifying x value of left side of bar
       barHeight = eightCountPercent; //two tails percent set to barheight
       color = Color.BLUE; //change color to blue
       label1 = "Eight's Count: " + eightCount + " (" + eightCountPercent+ "%)";
       //calling third bar to be drawn
-      Bar bar8 = new Bar(bottomRow2, left, width, barHeight, scale, color, label1);
+      Bar bar8 = new Bar(bottomRow3, left, width, barHeight, scale, color, label1);
 
       bar8.draw(g2);
 
 
-      left = (3*(getWidth()/7)) - (width/2); //specifying x value of left side of bar
+      left = (6*(getWidth()/7)) - (width/2); //specifying x value of left side of bar
       barHeight = nineCountPercent; //two tails percent set to barheight
       color = Color.BLUE; //change color to blue
       label1 = "Nine's Count: " + nineCount + " (" + nineCountPercent+ "%)";
       //calling third bar to be drawn
-      Bar bar9 = new Bar(bottomRow2, left, width, barHeight, scale, color, label1);
+      Bar bar9 = new Bar(bottomRow3, left, width, barHeight, scale, color, label1);
 
       bar9.draw(g2);
 
@@ -281,7 +283,7 @@ public class CardSimComponent extends JComponent
       color = Color.BLUE; //change color to blue
       label1 = "Ten's Count: " + tenCount + " (" + tenCountPercent+ "%)";
       //calling third bar to be drawn
-      Bar bar10 = new Bar(bottomRow2, left, width, barHeight, scale, color, label1);
+      Bar bar10 = new Bar(bottomRow4, left, width, barHeight, scale, color, label1);
 
       bar10.draw(g2);
 
@@ -291,7 +293,7 @@ public class CardSimComponent extends JComponent
       color = Color.BLUE; //change color to blue
       label1 = "Jack Count: " + jackCount + " (" + jackCountPercent+ "%)";
       //calling third bar to be drawn
-      Bar barJack = new Bar(bottomRow2, left, width, barHeight, scale, color, label1);
+      Bar barJack = new Bar(bottomRow4, left, width, barHeight, scale, color, label1);
 
       barJack.draw(g2);
 
@@ -301,36 +303,36 @@ public class CardSimComponent extends JComponent
       color = Color.BLUE; //change color to blue
       label1 = "Queen's Count: " + queenCount + " (" + queenCountPercent+ "%)";
       //calling third bar to be drawn
-      Bar barQueen = new Bar(bottomRow2, left, width, barHeight, scale, color, label1);
+      Bar barQueen = new Bar(bottomRow4, left, width, barHeight, scale, color, label1);
 
       barQueen.draw(g2);
 
-      // ROW 3 -------------------------------------------------------------------
+      // ROW 5 -------------------------------------------------------------------
 
-      left = (1*(getWidth()/7)) - (width/2); //specifying x value of left side of bar
+      left = (4*(getWidth()/7)) - (width/2); //specifying x value of left side of bar
       barHeight = kingCountPercent; //two tails percent set to barheight
       color = Color.BLUE; //change color to blue
       label1 = "King's Count: " + kingCount + " (" + kingCountPercent+ "%)";
       //calling third bar to be drawn
-      Bar barKing = new Bar(bottomRow3, left, width, barHeight, scale, color, label1);
+      Bar barKing = new Bar(bottomRow5, left, width, barHeight, scale, color, label1);
 
       barKing.draw(g2);
 
-      left = (2*(getWidth()/7)) - (width/2); //specifying x value of left side of bar
+      left = (5*(getWidth()/7)) - (width/2); //specifying x value of left side of bar
       barHeight = hitPercent; //two tails percent set to barheight
       color = Color.BLUE; //change color to blue
       label1 = "Hit card's Count: " + hitCount + " (" + hitPercent+ "%)";
       //calling third bar to be drawn
-      Bar barHit = new Bar(bottomRow3, left, width, barHeight, scale, color, label1);
+      Bar barHit = new Bar(bottomRow5, left, width, barHeight, scale, color, label1);
 
       barHit.draw(g2);
 
-      left = (3*(getWidth()/7)) - (width/2); //specifying x value of left side of bar
+      left = (6*(getWidth()/7)) - (width/2); //specifying x value of left side of bar
       barHeight = stayPercent; //two tails percent set to barheight
       color = Color.BLUE; //change color to blue
       label1 = "Stay card's Count: " + stayCount + " (" + stayPercent+ "%)";
       //calling third bar to be drawn
-      Bar barStay = new Bar(bottomRow3, left, width, barHeight, scale, color, label1);
+      Bar barStay = new Bar(bottomRow5, left, width, barHeight, scale, color, label1);
 
       barStay.draw(g2);
    }

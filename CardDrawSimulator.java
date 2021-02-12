@@ -149,8 +149,18 @@ public class CardDrawSimulator {
 
    public int getNumCardsLessThan(int value) {
       //return the number of cards remaining
+      //value is the difference to get 21
       int cardCount=0;
-      for(int i=0; i<value; i++){
+      if(value>10){
+        //all cards should give 21 or under
+        return totalCardCount;
+      }
+      else if(value>9){
+        //10
+        cardCount = totalCardCount-aceCount;
+      }
+      else if(value<=9)
+      for(int i=1; i<value; i++){
         cardCount+=deck[i];
       }
       return cardCount;

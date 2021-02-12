@@ -84,6 +84,8 @@ public class CardSimViewer
         System.out.println(component.getPlayerCards("dealer"));
         System.out.println("Dealer: " + component.getDealerScore());
         System.out.println("Player: " + component.getPlayer1Score());
+        //declare who won
+
 
         System.out.println("Wanna play again?? [y/n]");
         userInput = in.next().charAt(0);
@@ -91,7 +93,7 @@ public class CardSimViewer
         frame.setVisible(false);
       }
 
-      
+
       frame.dispose();
       //draw twice each one by one for player 1 and the dealer
       //coinsimcomponent draw

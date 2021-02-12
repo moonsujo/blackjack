@@ -5,6 +5,7 @@ public class PlayerTester {
     //test player after  it's constructed
     System.out.println("After constructor:");
     System.out.println("player's score [exp: 0]: " + player.getScore());
+    System.out.println("player's score1 [exp: 0]: " + player.getScore());
     System.out.println("player's hand [exp: empty arrayList]: " + player.getCards());
 
 
