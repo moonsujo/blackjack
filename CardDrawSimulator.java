@@ -72,8 +72,18 @@ public class CardDrawSimulator {
 
    public int draw()
    {
+     //while the deck is not empty
+     //for i < length of deck
+     //iterate through index of deck
+     //if index is 0
+     //remove the element in that index
 
      int cardResult = generator.nextInt(13);
+     //keep picking if no more suits of that type
+     while(deck[cardResult] == 0) {
+       cardResult = generator.nextInt(13);
+     }
+
      totalCardCount--;
 
      deck[cardResult]--;
@@ -90,6 +100,7 @@ public class CardDrawSimulator {
    }
 
    public int aceCount() {
+
       return deck[0];
    }
 

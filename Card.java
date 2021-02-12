@@ -18,15 +18,12 @@ class Card {
     private int       _y;
 
     //============================================================== constructor
-    public Card(ImageIcon image) {
+    public Card(ImageIcon image, int x, int y) {
         _image = image;
     }
 
     //=================================================================== moveTo
-    public void moveTo(int x, int y) {
-        _x = x;
-        _y = y;
-    }
+
 
     //================================================================= contains
     public boolean contains(int x, int y) {
@@ -55,7 +52,7 @@ class Card {
     }
 
     //===================================================================== draw
-    public void draw(Graphics g, Component c) {
-        _image.paintIcon(c, g, _x, _y);
+    public void draw(Graphics g, Component c, int x, int y) {
+        _image.paintIcon(c, g, x, y);
     }
 }

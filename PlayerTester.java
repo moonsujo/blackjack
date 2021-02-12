@@ -11,6 +11,8 @@ public class PlayerTester {
 
     CardSimComponent simComponent = new CardSimComponent();
 
+    //call a card that's not in the deck
+
 
     simComponent.hit("player");
 

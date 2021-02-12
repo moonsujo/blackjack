@@ -113,6 +113,10 @@ public class CardSimComponent extends JComponent
      dealer.reset();
    }
 
+   public String generateCardUrl(int Card) {
+     return String "hello"; //compile stuff
+   }
+
    public void paintComponent(Graphics g)
    {
       Graphics2D g2 = (Graphics2D) g;
@@ -187,6 +191,18 @@ public class CardSimComponent extends JComponent
       double scale = (rowHeight)*.01;
       //double scaleSecondRow
 
+      //dealer's cards
+      //_x
+      int left = (1*(getWidth()/7)) - (width/2); //specifying x value of left side of bar
+      String labelDealer = "Dealer: " + aceCount;
+      //_y
+      //create card object
+
+          c.draw(g2, this);
+      //player's cards
+
+
+      //PROBABILITIES SECTION
       //ace probability
       int left = (4*(getWidth()/7)) - (width/2); //specifying x value of left side of bar
       int barHeight = aceCountPercent; //two tails percent set to barheight
@@ -216,6 +232,7 @@ public class CardSimComponent extends JComponent
 
       bar3.draw(g2);
 
+      // ROW 2 -------------------------------------------------------------------
 
       left = (4*(getWidth()/7)) - (width/2); //specifying x value of left side of bar
       barHeight = fourCountPercent; //two tails percent set to barheight
@@ -245,7 +262,7 @@ public class CardSimComponent extends JComponent
 
       bar6.draw(g2);
 
-      // ROW 2 -------------------------------------------------------------------
+      // ROW 3 -------------------------------------------------------------------
 
       left = (4*(getWidth()/7)) - (width/2); //specifying x value of left side of bar
       barHeight = sevenCountPercent; //two tails percent set to barheight
@@ -287,6 +304,7 @@ public class CardSimComponent extends JComponent
 
       bar10.draw(g2);
 
+    // ROW 4 -------------------------------------------------------------------
 
       left = (5*(getWidth())/7) - (width/2); //specifying x value of left side of bar
       barHeight = jackCountPercent; //two tails percent set to barheight
