@@ -1,25 +1,12 @@
 import java.util.ArrayList;
 //import java.util.Dictionary<K,V>;
 
-/*Dictionary scoreDict = new Hashtable();
-scoreDict.put(1, 1);
-scoreDict.put(2, 2);
-scoreDict.put(3, 3);
-scoreDict.put(4, 4);
-scoreDict.put("5", 5);
-scoreDict.put("6", 6);
-scoreDict.put("7", 7);
-scoreDict.put("8", 8);
-scoreDict.put("9", 9);
-scoreDict.put("10", 10);
-scoreDict.put("Jack", 10);
-scoreDict.put("Queen", 10);
-scoreDict.put("King", 10);*/
+
 
 public class Player{
     private int score;
-    private int score2;
-    private int score3;
+    private int score1;
+
     private int aceCount;
 
     private int[] scoreKey = {1,2,3,4,5,6,7,8,9,10,10,10,10};
@@ -34,8 +21,8 @@ public class Player{
       //cards = new ArrayList<Integer>();
       stringCards = new ArrayList<String>();
       aceCount = 0;
-      score2 = 0;
-      score3 = 0;
+      score1 = 0;
+
 
     }
 
@@ -44,15 +31,25 @@ public class Player{
     }
 
     public int getScore() {
+      //creating second score option by counting one ace as 11
       if(aceCount>0){
-
         score1 = score+10;
-        if(){
-          
+        if(score1==21){
+          return score1;
+        }
+        else{
+          //if the higher value of the ace option is not bust
+          if(score1<21){
+            return score1;
+          }
+          else{
+            //if the higher value of ace option busts
+            return score;
+          }
         }
       }
-
       return score;
+
       //find the greatest score that is under 21
     }
     public void add(int cardDrawn) {
@@ -66,6 +63,15 @@ public class Player{
       stringCards.add(cardName);
       int cardValue = scoreKey[cardDrawn];
       score+=cardValue;
+
+
+    }
+    public void reset(){
+      aceCount = 0;
+      score1 = 0;
+      score = 0;
+
+      stringCards.clear();
 
 
     }

@@ -27,51 +27,71 @@ public class CardSimViewer
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
       //call the coinsim component with the parameter as the number of trials that was previously inputed
+
       CardSimComponent component = new CardSimComponent();
       frame.add(component);
       frame.setVisible(true);
 
-      System.out.println("Welcome to Black Jack!");
 
-      //starting the game
-      component.hit("player");
-      component.hit("dealer");
-      component.hit("player");
-      component.hit("dealer");
+      char userInput = 'y';
+      while(userInput == 'y'){
+        System.out.println("Welcome to Black Jack!");
+        frame.setVisible(true);
+        //starting the game
+        component.hit("player");
+        component.hit("dealer");
+        component.hit("player");
+        component.hit("dealer");
 
-      //player's turn
-      while(component.getPlayer1Score() < 21){
-          //ask the player if he wants to hit
-          System.out.println("Player 1... hit or pass?  Enter [y/n]");
-          char reply = in.next().charAt(0);
-          if (Character.toLowerCase(reply) == 'y') {
-              frame.setVisible(false);
-              component.hit("player");
-              frame.setVisible(true);
+        //player's turn
+        System.out.println(component.getPlayerCards("player"));
+        System.out.println("Player: " + component.getPlayer1Score());
 
-          }
-          else{
-            break;
-          }
-      }
+        while(component.getPlayer1Score() < 21){
+            //ask the player if he wants to hit
 
-      //if he busted, the dealer wins
-      //else, dealer's turn
+            System.out.println("Player 1... hit or pass?  Enter [y/n]");
+            char reply = in.next().charAt(0);
+            if (Character.toLowerCase(reply) == 'y') {
+                frame.setVisible(false);
+                component.hit("player");
+                System.out.println(component.getPlayerCards("player"));
+                System.out.println("Player: " + component.getPlayer1Score());
+                frame.setVisible(true);
 
-      //dealer's turn
-      //he hits until his score is 16 or lower
-      while(component.getDealerScore()<17 && component.getPlayer1Score()<22){
-        if (component.getDealerScore()<17){
-          component.hit("dealer");
+            }
+            else{
+              break;
+            }
         }
+
+        //if he busted, the dealer wins
+        //else, dealer's turn
+
+        //dealer's turn
+        //he hits until his score is 16 or lower
+        System.out.println(component.getPlayerCards("dealer"));
+        System.out.println("Dealer: " + component.getDealerScore());
+        while(component.getDealerScore()<17 && component.getPlayer1Score()<22){
+
+          if (component.getDealerScore()<17){
+            component.hit("dealer");
+            System.out.println(component.getPlayerCards("dealer"));
+            System.out.println("Dealer: " + component.getDealerScore());
+          }
+        }
+
+        System.out.println(component.getPlayerCards("dealer"));
+        System.out.println("Dealer: " + component.getDealerScore());
+        System.out.println("Player: " + component.getPlayer1Score());
+
+        System.out.println("Wanna play again?? [y/n]");
+        userInput = in.next().charAt(0);
+        component.reset();
+        frame.setVisible(false);
       }
 
-      System.out.println("Dealer: " + component.getDealerScore());
-      System.out.println("Player: " + component.getPlayer1Score());
-
-
-
-
+      System.out.println("Please close the window.");
       //draw twice each one by one for player 1 and the dealer
       //coinsimcomponent draw
       //scores kept track of in card sim viewer

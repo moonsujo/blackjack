@@ -20,6 +20,10 @@ public class CardDrawSimulator {
    private int queenCount;
    private int kingCount;
 
+
+   private int[] scoreKey = {1,2,3,4,5,6,7,8,9,10,10,10,10};
+   private int[] deck;
+
    private Random generator;
 
 
@@ -31,7 +35,7 @@ public class CardDrawSimulator {
       //create a generator that will give us our random number associated with a coinflip
 
       generator = new Random();
-
+      deck = new int[13];
       totalCardCount = 52;
       aceCount=4; //1
       twoCount=4; //2
@@ -47,6 +51,20 @@ public class CardDrawSimulator {
       queenCount=4; //12
       kingCount=4; //13
 
+      deck[0]=aceCount;
+      deck[1]=twoCount;
+      deck[2]=threeCount;
+      deck[3]=fourCount;
+      deck[4]=fiveCount;
+      deck[5]=sixCount;
+      deck[6]=sevenCount;
+      deck[7]=eightCount;
+      deck[8]=nineCount;
+      deck[9]=tenCount;
+      deck[10]=jackCount;
+      deck[11]=queenCount;
+      deck[12]=kingCount;
+      //deck = {aceCount, twoCount, threeCount, fourCount, fiveCount, sixCount, sevenCount, eightCount, nineCount, tenCount, jackCount, queenCount, kingCount};
 
    }
 
@@ -55,61 +73,12 @@ public class CardDrawSimulator {
    public int draw()
    {
 
-     int cardResult = generator.nextInt(13)+1;
+     int cardResult = generator.nextInt(13);
      totalCardCount--;
-     if (cardResult == 1)
-     {
-       aceCount--;
-     }
-     else if (cardResult == 2)
-     {
-       twoCount--;
-     }
-     else if (cardResult == 3)
-     {
-       threeCount--;
-     }
-     else if (cardResult == 4)
-     {
-       fourCount--;
-     }
-     else if (cardResult == 5)
-     {
-       fiveCount--;
-     }
-     else if (cardResult == 6)
-     {
-       sixCount--;
-     }
-     else if (cardResult == 7)
-     {
-       sevenCount--;
-     }
-     else if (cardResult == 8)
-     {
-       eightCount--;
-     }
-     else if (cardResult == 9)
-     {
-       nineCount--;
-     }
-     else if (cardResult == 10)
-     {
-       tenCount--;
-     }
-     else if (cardResult == 11)
-     {
-       jackCount--;
-     }
-     else if (cardResult == 12)
-     {
-       queenCount--;
-     }
-     else if (cardResult == 13)
-     {
-       kingCount--;
-     }
-     return cardResult;
+
+     deck[cardResult]--;
+
+     return cardResult+1;
 
    }
 
@@ -121,58 +90,72 @@ public class CardDrawSimulator {
    }
 
    public int aceCount() {
-      return aceCount;
+      return deck[0];
    }
 
    public int twoCount() {
-      return twoCount;
+      return deck[1];
    }
 
    public int threeCount() {
-      return threeCount;
+      return deck[2];
    }
 
    public int fourCount() {
-	  return fourCount;
+	  return deck[3];
    }
 
    public int fiveCount() {
-	  return fiveCount;
+	  return deck[4];
    }
 
    public int sixCount() {
-	  return sixCount;
+	  return deck[5];
    }
 
    public int sevenCount() {
-      return sevenCount;
+      return deck[6];
    }
 
    public int eightCount() {
-	  return eightCount;
+	  return deck[7];
    }
 
    public int nineCount() {
-	  return nineCount;
+	  return deck[8];
    }
 
    public int tenCount() {
-      return tenCount;
+      return deck[9];
    }
 
    public int jackCount() {
-	  return jackCount;
+	  return deck[10];
    }
 
    public int queenCount() {
-	  return queenCount;
+	  return deck[11];
    }
 
    public int kingCount() {
-    return kingCount;
+    return deck[12];
    }
 
-   /**
+
+   public int[] getDeck() {
+      //return the number of cards remaining
+      return deck;
+   }
+
+   public int getNumCardsLessThan(int value) {
+      //return the number of cards remaining
+      int cardCount=0;
+      for(int i=0; i<value; i++){
+        cardCount+=deck[i];
+      }
+      return cardCount;
+   }
+   /*
       Resets the simulation, so that subsequent runs start from 0 trials done.
     */
    public void reset()
@@ -192,6 +175,20 @@ public class CardDrawSimulator {
       jackCount=4;
       queenCount=4;
       kingCount=4;
+
+      deck[0]=aceCount;
+      deck[1]=twoCount;
+      deck[2]=threeCount;
+      deck[3]=fourCount;
+      deck[4]=fiveCount;
+      deck[5]=sixCount;
+      deck[6]=sevenCount;
+      deck[7]=eightCount;
+      deck[8]=nineCount;
+      deck[9]=tenCount;
+      deck[10]=jackCount;
+      deck[11]=queenCount;
+      deck[12]=kingCount;
    }
 
 }

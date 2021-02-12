@@ -50,6 +50,7 @@ public class CardSimComponent extends JComponent
 
    private Player player;
    private Player dealer;
+   private ArrayList<String> cards;
 
    private CardDrawSimulator simulator;
 
@@ -69,8 +70,6 @@ public class CardSimComponent extends JComponent
 
    }
 
-
-
    public void hit(String playerType) {
      if(playerType=="player"){
        int cardDrawn = simulator.draw();
@@ -89,6 +88,29 @@ public class CardSimComponent extends JComponent
 
    public int getDealerScore() {
      return dealer.getScore();
+   }
+
+   public String getPlayerCards(String playerType) {
+     if(playerType=="player"){
+       cards = player.getStringCards();
+     }
+
+     else{
+       cards = dealer.getStringCards();
+     }
+     String hand = "(";
+     for(int i=0; i<cards.size(); i++){
+       hand+=cards.get(i);
+       hand+="  ";
+     }
+     hand+=")";
+     return hand;
+   }
+
+   public void reset() {
+     simulator.reset();
+     player.reset();
+     dealer.reset();
    }
 
    public void paintComponent(Graphics g)
@@ -142,6 +164,13 @@ public class CardSimComponent extends JComponent
       kingCount = simulator.kingCount();
       kingCountPercent = (int) Math.round((kingCount*100)/totalCardCount);
 
+      //probability
+      int score = player.getScore();
+      int difference = 21-score;
+      int hitCount = simulator.getNumCardsLessThan(difference);
+      int hitPercent = (int) Math.round((hitCount*100)/totalCardCount);
+      int stayCount = totalCardCount-hitCount;
+      int stayPercent = (int) Math.round((stayCount*100)/totalCardCount);
 
 
       int widthBuffer = 20;
@@ -276,6 +305,8 @@ public class CardSimComponent extends JComponent
 
       barQueen.draw(g2);
 
+      // ROW 3 -------------------------------------------------------------------
+
       left = (1*(getWidth()/7)) - (width/2); //specifying x value of left side of bar
       barHeight = kingCountPercent; //two tails percent set to barheight
       color = Color.BLUE; //change color to blue
@@ -284,5 +315,23 @@ public class CardSimComponent extends JComponent
       Bar barKing = new Bar(bottomRow3, left, width, barHeight, scale, color, label1);
 
       barKing.draw(g2);
+
+      left = (2*(getWidth()/7)) - (width/2); //specifying x value of left side of bar
+      barHeight = hitPercent; //two tails percent set to barheight
+      color = Color.BLUE; //change color to blue
+      label1 = "Hit card's Count: " + hitCount + " (" + hitPercent+ "%)";
+      //calling third bar to be drawn
+      Bar barHit = new Bar(bottomRow3, left, width, barHeight, scale, color, label1);
+
+      barHit.draw(g2);
+
+      left = (3*(getWidth()/7)) - (width/2); //specifying x value of left side of bar
+      barHeight = stayPercent; //two tails percent set to barheight
+      color = Color.BLUE; //change color to blue
+      label1 = "Stay card's Count: " + stayCount + " (" + stayPercent+ "%)";
+      //calling third bar to be drawn
+      Bar barStay = new Bar(bottomRow3, left, width, barHeight, scale, color, label1);
+
+      barStay.draw(g2);
    }
 }
