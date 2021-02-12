@@ -91,7 +91,8 @@ public class CardSimViewer
         frame.setVisible(false);
       }
 
-      System.out.println("Please close the window.");
+      
+      frame.dispose();
       //draw twice each one by one for player 1 and the dealer
       //coinsimcomponent draw
       //scores kept track of in card sim viewer
