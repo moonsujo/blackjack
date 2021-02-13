@@ -1,7 +1,9 @@
 
-
+import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JButton;
 import java.util.Scanner;
 import java.lang.Character;
 
@@ -32,17 +34,37 @@ public class CardSimViewer
       frame.add(component);
       frame.setVisible(true);
 
+      JButton b=new JButton("Hit");
+
+      //pnlButton.setLayout(null);
+      //b.setPreferredSize((new Dimension(100, 100)));
+
+
+
+      //frame.add(b);
+      JPanel panel = new JPanel();
+
+      frame.getContentPane();
+      //Dimension size = b.getPreferredSize();
+      //b.setBounds(10, 100, 20, 20);
+
+
+      b.setPreferredSize(new Dimension(300, 50));
+      //b.setBounds(300, 180, size.width, size.height);
+      panel.add(b);
+      frame.add(panel);
 
       char userInput = 'y';
       while(userInput == 'y'){
         System.out.println("Welcome to Black Jack!");
         frame.setVisible(true);
         //starting the game
+        frame.setVisible(false);
         component.hit("player");
         component.hit("dealer");
         component.hit("player");
         component.hit("dealer");
-
+        frame.setVisible(true);
         //player's turn
 
         System.out.println("Player: " + component.getPlayer1Score());
@@ -81,7 +103,7 @@ public class CardSimViewer
           }
         }
 
-      
+
         System.out.println("Dealer: " + component.getDealerScore());
         System.out.println("Player: " + component.getPlayer1Score());
         //declare who won

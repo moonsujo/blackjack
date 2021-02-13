@@ -36,7 +36,7 @@ public class CardDrawSimulator {
 
       generator = new Random();
       //shdc
-      int[] aces = {1, 1, 1, 1};
+      /*int[] aces = {1, 1, 1, 1};
       int[] twos = {1, 1, 1, 1};
       int[] threes = {1, 1, 1, 1};
       int[] fours = {1, 1, 1, 1};
@@ -47,9 +47,14 @@ public class CardDrawSimulator {
       int[] nines = {1, 1, 1, 1};
       int[] tens = {1, 1, 1, 1};
       int[] jacks = {1, 1, 1, 1};
-      int[] queens = {1, 1, 1, 1};
-      int[] kings = {1, 1, 1, 1};
-      int[][] deck = { aces, twos, threes, fours, fives, sixes, sevens, eights, nines, tens, jacks, queens, kings };
+      int[] queens = ;
+      int[] kings = ;*/
+      deck = new int[13][4];
+      for (int i = 0; i < 13; i++) {
+        for (int j = 0; j < 4; j++) {
+          deck[i][j] = 1;
+        }
+      }
       totalCardCount = 52;
       /*aceCount=4; //1
       twoCount=4; //2
@@ -84,15 +89,14 @@ public class CardDrawSimulator {
 
 
 
-   public int[] draw()
-   {
+   public int[] draw(){
      //while the deck is not empty
      //for i < length of deck
      //iterate through index of deck
      //if index is 0
      //remove the element in that index
      //keep picking if no more suits of that type
-     int zeroCounter = 0;
+
      boolean cardValid = false;
      int cardResult=0;
      int suiteResult=0;
@@ -185,10 +189,7 @@ public class CardDrawSimulator {
    }
 
 */
-   public int[][] getDeck() {
-      //return the number of cards remaining
-      return deck;
-   }
+
 
    public int getNumCardsLessThan(int value) {
       //return the number of cards remaining
@@ -244,20 +245,11 @@ public class CardDrawSimulator {
 
 
 
-      int[] aces = {1, 1, 1, 1};
-      int[] twos = {1, 1, 1, 1};
-      int[] threes = {1, 1, 1, 1};
-      int[] fours = {1, 1, 1, 1};
-      int[] fives = {1, 1, 1, 1};
-      int[] sixes = {1, 1, 1, 1};
-      int[] sevens = {1, 1, 1, 1};
-      int[] eights = {1, 1, 1, 1};
-      int[] nines = {1, 1, 1, 1};
-      int[] tens = {1, 1, 1, 1};
-      int[] jacks = {1, 1, 1, 1};
-      int[] queens = {1, 1, 1, 1};
-      int[] kings = {1, 1, 1, 1};
-      int[][] deck = { aces, twos, threes, fours, fives, sixes, sevens, eights, nines, tens, jacks, queens, kings };
+      for (int i = 0; i < 13; i++) {
+        for (int j = 0; j < 4; j++) {
+          deck[i][j] = 1;
+        }
+      }
       totalCardCount = 52;
 
    }

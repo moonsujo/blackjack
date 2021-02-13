@@ -5,8 +5,9 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JComponent;
 import java.awt.Color;
-
+import javax.swing.JButton;
 import javax.swing.ImageIcon;
+
 
 /**
    This component draws two car shapes.
@@ -185,13 +186,20 @@ public class CardSimComponent extends JComponent
       int x = getWidth()/7;
       int y = getHeight()/3;
 
-
+      g2.drawString("Player's Score: " + player.getScore(), x, y-20);
       for(Card c: player.getCardsArrayList()){
         c.draw(g2, this, x, y);
         x+=30;
       }
 
+      x = getWidth()/7;
+      g2.drawString("Dealer's Score: " + dealer.getScore(), x, (2*y)-20);
+      for(Card c: dealer.getCardsArrayList()){
+        c.draw(g2, this, x, 2*y);
+        x+=30;
+      }
 
+      
       //player's cards
 
 

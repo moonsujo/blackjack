@@ -27,6 +27,7 @@ public class Player{
       stringCards = new ArrayList<String>();
       aceCount = 0;
       score1 = 0;
+      hand = new ArrayList<Card>();
 
 
     }
@@ -70,7 +71,7 @@ public class Player{
       }
 
 
-      String imagePath = "cards/images/" + faces.charAt(cardDrawn) + suites.charAt(suiteDrawn) + ".gif";
+      String imagePath = "cards/" + faces.charAt(cardDrawn) + suites.charAt(suiteDrawn) + ".gif";
 
 
       stringCards.add(imagePath);
@@ -90,6 +91,7 @@ public class Player{
       score = 0;
 
       stringCards.clear();
+      hand.clear();
 
 
     }
