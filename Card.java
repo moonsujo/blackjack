@@ -5,7 +5,7 @@
 // Enhancements:
 //          * Needs to have Suit and Face value.
 
-package cards;
+//package cards;
 
 import java.awt.*;
 import javax.swing.*;
@@ -18,12 +18,15 @@ class Card {
     private int       _y;
 
     //============================================================== constructor
-    public Card(ImageIcon image, int x, int y) {
+    public Card(ImageIcon image) {
         _image = image;
     }
 
     //=================================================================== moveTo
-
+    public void moveTo(int x, int y) {
+            _x = x;
+            _y = y;
+        }
 
     //================================================================= contains
     public boolean contains(int x, int y) {
@@ -52,7 +55,7 @@ class Card {
     }
 
     //===================================================================== draw
-    public void draw(Graphics g, Component c, int x, int y) {
-        _image.paintIcon(c, g, x, y);
+    public void draw(Graphics g, Component c, int _x, int _y) {
+        _image.paintIcon(c, g, _x, _y);
     }
 }

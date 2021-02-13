@@ -6,6 +6,8 @@ import java.awt.Graphics2D;
 import javax.swing.JComponent;
 import java.awt.Color;
 
+import javax.swing.ImageIcon;
+
 /**
    This component draws two car shapes.
 
@@ -68,16 +70,17 @@ public class CardSimComponent extends JComponent
       player = new Player();
       dealer = new Player();
 
+
    }
 
    public void hit(String playerType) {
      if(playerType=="player"){
-       int cardDrawn = simulator.draw();
-       player.add(cardDrawn);
+       int[] cardDrawn = simulator.draw();
+       player.add(cardDrawn[0], cardDrawn[1]);
      }
      else{
-       int cardDrawn = simulator.draw();
-       dealer.add(cardDrawn);
+       int[] cardDrawn = simulator.draw();
+       dealer.add(cardDrawn[0], cardDrawn[1]);
      }
 
    }
@@ -90,32 +93,12 @@ public class CardSimComponent extends JComponent
      return dealer.getScore();
    }
 
-   public String getPlayerCards(String playerType) {
-     if(playerType=="player"){
-       cards = player.getStringCards();
-     }
-
-     else{
-       cards = dealer.getStringCards();
-     }
-     String hand = "(";
-     for(int i=0; i<cards.size(); i++){
-       hand+=cards.get(i);
-       hand+="  ";
-     }
-     hand+=")";
-     return hand;
-   }
-
    public void reset() {
      simulator.reset();
      player.reset();
      dealer.reset();
    }
 
-   public String generateCardUrl(int Card) {
-     return String "hello"; //compile stuff
-   }
 
    public void paintComponent(Graphics g)
    {
@@ -129,43 +112,43 @@ public class CardSimComponent extends JComponent
       totalCardCount = simulator.getNumCards();
       //calculating the percentages of each outcome possibility
       //for label display purpose
-      aceCount = simulator.aceCount();
+      aceCount = simulator.getCardTypeCount(0);
       aceCountPercent = (int) Math.round((aceCount*100)/totalCardCount);
 
-      twoCount = simulator.twoCount();
+      twoCount = simulator.getCardTypeCount(1);
       twoCountPercent = (int) Math.round((twoCount*100)/totalCardCount);
 
-      threeCount = simulator.threeCount();
+      threeCount = simulator.getCardTypeCount(2);
       threeCountPercent = (int) Math.round((threeCount*100)/totalCardCount);
 
-      fourCount = simulator.fourCount();
+      fourCount = simulator.getCardTypeCount(3);
       fourCountPercent = (int) Math.round((fourCount*100)/totalCardCount);
 
-      fiveCount = simulator.fiveCount();
+      fiveCount = simulator.getCardTypeCount(4);
       fiveCountPercent = (int) Math.round((fiveCount*100)/totalCardCount);
 
-      sixCount = simulator.sixCount();
+      sixCount = simulator.getCardTypeCount(5);
       sixCountPercent = (int) Math.round((sixCount*100)/totalCardCount);
 
-      sevenCount = simulator.sevenCount();
+      sevenCount = simulator.getCardTypeCount(6);
       sevenCountPercent = (int) Math.round((sevenCount*100)/totalCardCount);
 
-      eightCount = simulator.eightCount();
+      eightCount = simulator.getCardTypeCount(7);
       eightCountPercent = (int) Math.round((eightCount*100)/totalCardCount);
 
-      nineCount = simulator.nineCount();
+      nineCount = simulator.getCardTypeCount(8);
       nineCountPercent = (int) Math.round((nineCount*100)/totalCardCount);
 
-      tenCount = simulator.tenCount();
+      tenCount = simulator.getCardTypeCount(9);
       tenCountPercent = (int) Math.round((tenCount*100)/totalCardCount);
 
-      jackCount = simulator.jackCount();
+      jackCount = simulator.getCardTypeCount(10);
       jackCountPercent = (int) Math.round((jackCount*100)/totalCardCount);
 
-      queenCount = simulator.queenCount();
+      queenCount = simulator.getCardTypeCount(11);
       queenCountPercent = (int) Math.round((queenCount*100)/totalCardCount);
 
-      kingCount = simulator.kingCount();
+      kingCount = simulator.getCardTypeCount(12);
       kingCountPercent = (int) Math.round((kingCount*100)/totalCardCount);
 
       //probability
@@ -193,12 +176,22 @@ public class CardSimComponent extends JComponent
 
       //dealer's cards
       //_x
-      int left = (1*(getWidth()/7)) - (width/2); //specifying x value of left side of bar
-      String labelDealer = "Dealer: " + aceCount;
+
       //_y
       //create card object
 
-          c.draw(g2, this);
+      //player print cards
+
+      int x = getWidth()/7;
+      int y = getHeight()/3;
+
+
+      for(Card c: player.getCardsArrayList()){
+        c.draw(g2, this, x, y);
+        x+=30;
+      }
+
+
       //player's cards
 
 

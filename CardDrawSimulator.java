@@ -22,7 +22,7 @@ public class CardDrawSimulator {
 
 
    private int[] scoreKey = {1,2,3,4,5,6,7,8,9,10,10,10,10};
-   private int[] deck;
+   private int[][] deck;
 
    private Random generator;
 
@@ -35,9 +35,23 @@ public class CardDrawSimulator {
       //create a generator that will give us our random number associated with a coinflip
 
       generator = new Random();
-      deck = new int[13];
+      //shdc
+      int[] aces = {1, 1, 1, 1};
+      int[] twos = {1, 1, 1, 1};
+      int[] threes = {1, 1, 1, 1};
+      int[] fours = {1, 1, 1, 1};
+      int[] fives = {1, 1, 1, 1};
+      int[] sixes = {1, 1, 1, 1};
+      int[] sevens = {1, 1, 1, 1};
+      int[] eights = {1, 1, 1, 1};
+      int[] nines = {1, 1, 1, 1};
+      int[] tens = {1, 1, 1, 1};
+      int[] jacks = {1, 1, 1, 1};
+      int[] queens = {1, 1, 1, 1};
+      int[] kings = {1, 1, 1, 1};
+      int[][] deck = { aces, twos, threes, fours, fives, sixes, sevens, eights, nines, tens, jacks, queens, kings };
       totalCardCount = 52;
-      aceCount=4; //1
+      /*aceCount=4; //1
       twoCount=4; //2
       threeCount=4;  //3
       fourCount=4; ///4
@@ -63,32 +77,42 @@ public class CardDrawSimulator {
       deck[9]=tenCount;
       deck[10]=jackCount;
       deck[11]=queenCount;
-      deck[12]=kingCount;
+      deck[12]=kingCount;*/
       //deck = {aceCount, twoCount, threeCount, fourCount, fiveCount, sixCount, sevenCount, eightCount, nineCount, tenCount, jackCount, queenCount, kingCount};
 
    }
 
 
 
-   public int draw()
+   public int[] draw()
    {
      //while the deck is not empty
      //for i < length of deck
      //iterate through index of deck
      //if index is 0
      //remove the element in that index
-
-     int cardResult = generator.nextInt(13);
      //keep picking if no more suits of that type
-     while(deck[cardResult] == 0) {
+     int zeroCounter = 0;
+     boolean cardValid = false;
+     int cardResult=0;
+     int suiteResult=0;
+     while (cardValid == false){
        cardResult = generator.nextInt(13);
+       suiteResult = generator.nextInt(4);
+       if (deck[cardResult][suiteResult] == 0) {
+         continue;
+       }
+       else {
+         cardValid = true;
+         totalCardCount--;
+         deck[cardResult][suiteResult]=0;
+       }
      }
 
-     totalCardCount--;
 
-     deck[cardResult]--;
 
-     return cardResult+1;
+     int[] numberAndSuite = {cardResult, suiteResult};
+     return numberAndSuite;
 
    }
 
@@ -99,6 +123,14 @@ public class CardDrawSimulator {
       return totalCardCount;
    }
 
+   public int getCardTypeCount(int card){
+     int suiteCount = 0;
+     for(int i = 0; i<4; i++){
+       suiteCount += deck[card][i];
+     }
+     return suiteCount;
+   }
+   /*
    public int aceCount() {
 
       return deck[0];
@@ -152,8 +184,8 @@ public class CardDrawSimulator {
     return deck[12];
    }
 
-
-   public int[] getDeck() {
+*/
+   public int[][] getDeck() {
       //return the number of cards remaining
       return deck;
    }
@@ -166,15 +198,13 @@ public class CardDrawSimulator {
         //all cards should give 21 or under
         return totalCardCount;
       }
-      else if(value>9){
-        //10
-        cardCount = totalCardCount-aceCount;
+      else{
+        for(int i=0; i<value; i++){
+          cardCount+=getCardTypeCount(i);
+        }
+        return cardCount;
       }
-      else if(value<=9)
-      for(int i=1; i<value; i++){
-        cardCount+=deck[i];
-      }
-      return cardCount;
+
    }
    /*
       Resets the simulation, so that subsequent runs start from 0 trials done.
@@ -182,7 +212,7 @@ public class CardDrawSimulator {
    public void reset()
    {
       //reseting all private member variables
-      totalCardCount = 52;
+      /*totalCardCount = 52;
       aceCount=4;
       twoCount=4;
       threeCount=4;
@@ -209,7 +239,27 @@ public class CardDrawSimulator {
       deck[9]=tenCount;
       deck[10]=jackCount;
       deck[11]=queenCount;
-      deck[12]=kingCount;
+      deck[12]=kingCount;*/
+
+
+
+
+      int[] aces = {1, 1, 1, 1};
+      int[] twos = {1, 1, 1, 1};
+      int[] threes = {1, 1, 1, 1};
+      int[] fours = {1, 1, 1, 1};
+      int[] fives = {1, 1, 1, 1};
+      int[] sixes = {1, 1, 1, 1};
+      int[] sevens = {1, 1, 1, 1};
+      int[] eights = {1, 1, 1, 1};
+      int[] nines = {1, 1, 1, 1};
+      int[] tens = {1, 1, 1, 1};
+      int[] jacks = {1, 1, 1, 1};
+      int[] queens = {1, 1, 1, 1};
+      int[] kings = {1, 1, 1, 1};
+      int[][] deck = { aces, twos, threes, fours, fives, sixes, sevens, eights, nines, tens, jacks, queens, kings };
+      totalCardCount = 52;
+
    }
 
 }

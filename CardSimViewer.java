@@ -44,7 +44,7 @@ public class CardSimViewer
         component.hit("dealer");
 
         //player's turn
-        System.out.println(component.getPlayerCards("player"));
+
         System.out.println("Player: " + component.getPlayer1Score());
 
         while(component.getPlayer1Score() < 21){
@@ -55,7 +55,7 @@ public class CardSimViewer
             if (Character.toLowerCase(reply) == 'y') {
                 frame.setVisible(false);
                 component.hit("player");
-                System.out.println(component.getPlayerCards("player"));
+
                 System.out.println("Player: " + component.getPlayer1Score());
                 frame.setVisible(true);
 
@@ -70,18 +70,18 @@ public class CardSimViewer
 
         //dealer's turn
         //he hits until his score is 16 or lower
-        System.out.println(component.getPlayerCards("dealer"));
+
         System.out.println("Dealer: " + component.getDealerScore());
         while(component.getDealerScore()<17 && component.getPlayer1Score()<22){
 
           if (component.getDealerScore()<17){
             component.hit("dealer");
-            System.out.println(component.getPlayerCards("dealer"));
+
             System.out.println("Dealer: " + component.getDealerScore());
           }
         }
 
-        System.out.println(component.getPlayerCards("dealer"));
+      
         System.out.println("Dealer: " + component.getDealerScore());
         System.out.println("Player: " + component.getPlayer1Score());
         //declare who won
