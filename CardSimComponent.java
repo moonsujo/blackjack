@@ -51,6 +51,12 @@ public class CardSimComponent extends JComponent
    private int queenCountPercent;
    private int kingCountPercent;
 
+   private Boolean playerTurn;
+   private String winStatus;
+   private int dealerWinCount;
+   private int playerWinCount;
+
+
    private Player player;
    private Player dealer;
    private ArrayList<String> cards;
@@ -70,7 +76,10 @@ public class CardSimComponent extends JComponent
       simulator = new CardDrawSimulator();
       player = new Player();
       dealer = new Player();
-
+      playerTurn = true;
+      winStatus = "";
+      playerWinCount = 0;
+      dealerWinCount = 0;
 
    }
 
@@ -94,10 +103,45 @@ public class CardSimComponent extends JComponent
      return dealer.getScore();
    }
 
+   public void updateTurn() {
+     playerTurn = false;
+
+   }
+
+   public void updateStatus() {
+     if(player.getScore()<=21 && dealer.getScore()<=21){
+       if(player.getScore() == dealer.getScore()){
+         winStatus="This game resulted in a push";
+       }
+       else if(player.getScore()>dealer.getScore()){
+         winStatus="You won!";
+         playerWinCount++;
+       }
+       else{
+         winStatus="Apologies, you lost";
+         dealerWinCount++;
+       }
+     }
+     else if(player.getScore()>21){
+       winStatus = "Apologies, you lost";
+       dealerWinCount++;
+     }
+     else{
+       winStatus = "You won!";
+       playerWinCount++;
+     }
+
+
+
+   }
+
+
    public void reset() {
      simulator.reset();
      player.reset();
      dealer.reset();
+     playerTurn = true;
+     winStatus = "";
    }
 
 
@@ -192,14 +236,34 @@ public class CardSimComponent extends JComponent
         x+=30;
       }
 
-      x = getWidth()/7;
-      g2.drawString("Dealer's Score: " + dealer.getScore(), x, (2*y)-20);
-      for(Card c: dealer.getCardsArrayList()){
-        c.draw(g2, this, x, 2*y);
-        x+=30;
+      //how do we get this to only display when the player has stopped hitting??
+      //Should only display one card until players turn is over.
+      //if the player is done hitting
+
+
+      //if its the dealers turn, display his true score and cards.
+      if(playerTurn == false){
+        x = getWidth()/7;
+        g2.drawString("Dealer's Score: " + dealer.getScore(), x, (2*y)-20);
+        for(Card c: dealer.getCardsArrayList()){
+          c.draw(g2, this, x, 2*y);
+          x+=30;
+        }
+        x = getWidth()/7;
+        //display who won
+        g2.drawString(winStatus, x, (3*y)-100);
+
+      }
+      //if it is the players turn, show the dealers first card and
+      //corresponding score.
+      else{
+        x = getWidth()/7;
+        g2.drawString("Dealer's Score: " + dealer.getStartScore(), x, (2*y)-20);
+        dealer.getCardsArrayList().get(0).draw(g2, this, x, 2*y);
       }
 
-      
+      g2.drawString("Player Wins: " + playerWinCount, x, (3*y)-60);
+      g2.drawString("Dealer Wins: " + dealerWinCount, x, (3*y)-40);
       //player's cards
 
 

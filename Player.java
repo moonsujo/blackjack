@@ -9,6 +9,7 @@ public class Player{
     private int score1;
 
     private int aceCount;
+    private int startCount;
 
     private int[] scoreKey = {1,2,3,4,5,6,7,8,9,10,10,10,10};
     //private String stringKey = {"Ace","2","3","4","5","6","7","8","9","10","Jack","Queen","King"};
@@ -38,7 +39,10 @@ public class Player{
     public ArrayList<Card> getCardsArrayList(){
       return hand;
     }
+    public int getStartScore(){
 
+      return startCount;
+    }
     public int getScore() {
       //creating second score option by counting one ace as 11
       if(aceCount>0){
@@ -71,11 +75,17 @@ public class Player{
       }
 
 
+
+
       String imagePath = "cards/" + faces.charAt(cardDrawn) + suites.charAt(suiteDrawn) + ".gif";
 
 
       stringCards.add(imagePath);
       int cardValue = scoreKey[cardDrawn];
+      //save the value of the beginning card
+      if(score == 0){
+        startCount = cardValue;
+      }
       score+=cardValue;
 
       ClassLoader cldr = this.getClass().getClassLoader();

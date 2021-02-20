@@ -6,6 +6,8 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 import java.util.Scanner;
 import java.lang.Character;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class CardSimViewer {
 
@@ -30,22 +32,25 @@ public class CardSimViewer {
     frame.add(component);
     frame.setVisible(true);
 
-    // JButton b = new JButton("Hit");
+    //BUTTON INSERT CODE
+/*
+    JButton b = new JButton("Hit");
+    JPanel panel = new JPanel();
 
-    // pnlButton.setLayout(null);
-    // b.setPreferredSize((new Dimension(100, 100)));
+    frame.getContentPane();
+    Dimension size = b.getPreferredSize();
 
-    // frame.add(b);
-    // JPanel panel = new JPanel();
 
-    // frame.getContentPane();
-    // Dimension size = b.getPreferredSize();
-    // b.setBounds(10, 100, 20, 20);
 
-    // b.setPreferredSize(new Dimension(300, 50));
-    // b.setBounds(300, 180, size.width, size.height);
-    // panel.add(b);
-    // frame.add(panel);
+    b.setPreferredSize(new Dimension(300, 50));
+    b.setBounds(300, 180, 10, 10);
+    panel.add(b);
+    frame.add(panel);
+
+*/
+
+
+    //button code
 
     char userInput = 'y';
     while (userInput == 'y') {
@@ -58,6 +63,7 @@ public class CardSimViewer {
       component.hit("player");
       component.hit("dealer");
       // frame.setVisible(true);
+
       frame.repaint();
       // player's turn
 
@@ -76,11 +82,14 @@ public class CardSimViewer {
           // frame.setVisible(true);
           frame.repaint();
 
-        } else {
+        }
+        else {
+
+          //create a way to pass player is done parameter into the component
           break;
         }
       }
-
+      component.updateTurn();
       // if he busted, the dealer wins
       // else, dealer's turn
 
@@ -90,24 +99,24 @@ public class CardSimViewer {
       System.out.println("Dealer: " + component.getDealerScore());
       while (component.getDealerScore() < 17 && component.getPlayer1Score() < 22) {
 
-        if (component.getDealerScore() < 17) {
-          component.hit("dealer");
-          // frame.setVisible(true);
-          frame.repaint();
+        
+        component.hit("dealer");
+        //frame.setVisible(true);
+        frame.repaint();
 
-          System.out.println("Dealer: " + component.getDealerScore());
-        }
+        System.out.println("Dealer: " + component.getDealerScore());
+
       }
 
       // frame.setVisible(false);
       // frame.setVisible(true);
 
-      // frame.repaint();
+      frame.repaint();
 
       System.out.println("Dealer: " + component.getDealerScore());
       System.out.println("Player: " + component.getPlayer1Score());
       // declare who won
-
+      component.updateStatus();
       System.out.println("Wanna play again?? [y/n]");
       userInput = in.next().charAt(0);
       component.reset();
