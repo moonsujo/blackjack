@@ -48,14 +48,14 @@ public class CardSimViewer {
     frame.add(panel);
 
 */
-
+    
 
     //button code
 
     char userInput = 'y';
     while (userInput == 'y') {
       System.out.println("Welcome to Black Jack!");
-      frame.setVisible(true);
+
       // starting the game
       // frame.setVisible(false);
       component.hit("player");
@@ -87,9 +87,12 @@ public class CardSimViewer {
 
           //create a way to pass player is done parameter into the component
           break;
+
         }
       }
       component.updateTurn();
+
+
       // if he busted, the dealer wins
       // else, dealer's turn
 
@@ -99,7 +102,7 @@ public class CardSimViewer {
       System.out.println("Dealer: " + component.getDealerScore());
       while (component.getDealerScore() < 17 && component.getPlayer1Score() < 22) {
 
-        
+
         component.hit("dealer");
         //frame.setVisible(true);
         frame.repaint();
@@ -108,15 +111,17 @@ public class CardSimViewer {
 
       }
 
+
       // frame.setVisible(false);
       // frame.setVisible(true);
 
-      frame.repaint();
+
 
       System.out.println("Dealer: " + component.getDealerScore());
       System.out.println("Player: " + component.getPlayer1Score());
       // declare who won
       component.updateStatus();
+      frame.repaint();
       System.out.println("Wanna play again?? [y/n]");
       userInput = in.next().charAt(0);
       component.reset();

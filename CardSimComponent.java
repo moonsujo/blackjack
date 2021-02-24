@@ -245,7 +245,9 @@ public class CardSimComponent extends JComponent
       if(playerTurn == false){
         x = getWidth()/7;
         g2.drawString("Dealer's Score: " + dealer.getScore(), x, (2*y)-20);
-        for(Card c: dealer.getCardsArrayList()){
+        //for(Card c: dealer.getCardsArrayList()){
+        for(int i=0; i<dealer.getCardsArrayList().size(); i++){
+          Card c = dealer.getCardsArrayList().get(i);
           c.draw(g2, this, x, 2*y);
           x+=30;
         }
