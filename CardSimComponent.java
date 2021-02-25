@@ -95,6 +95,51 @@ public class CardSimComponent extends JComponent
 
    }
 
+
+
+   //Tester Method to manually add a card
+   //
+   public void manualAddCard(String playerType, int card, int suite) {
+     if(playerType=="player"){
+       int[] cardDrawn = simulator.draw();
+       player.add(card, suite);
+     }
+     else{
+       int[] cardDrawn = simulator.draw();
+       dealer.add(card, suite);
+     }
+
+
+   }
+
+   //Tester Method to print the players Cards
+   //this will access the getstring cards method in the player Class
+   //which will return a array of cars "2h, 3c, ad"
+   public void printPlayerCards(String playerType) {
+     if(playerType=="player"){
+       System.out.print("(");
+       for(int i=0; i<player.getStringCards().size(); i++){
+         System.out.print(player.getStringCards().get(i));
+         System.out.print(", ");
+         System.out.print(")");
+       }
+     }
+     else{
+       System.out.print("(");
+       for(int i=0; i<dealer.getStringCards().size(); i++){
+         System.out.print(dealer.getStringCards().get(i));
+         System.out.print(", ");
+       }
+       System.out.print(")");
+     }
+
+   }
+
+   public String displayWin() {
+     updateStatus();
+     return winStatus;
+   }
+
    public int getPlayer1Score() {
      return player.getScore();
    }
@@ -240,28 +285,29 @@ public class CardSimComponent extends JComponent
       //Should only display one card until players turn is over.
       //if the player is done hitting
 
-
+      if(player.getCardsArrayList().size()>0 && dealer.getCardsArrayList().size()>0){
       //if its the dealers turn, display his true score and cards.
-      if(playerTurn == false){
-        x = getWidth()/7;
-        g2.drawString("Dealer's Score: " + dealer.getScore(), x, (2*y)-20);
-        //for(Card c: dealer.getCardsArrayList()){
-        for(int i=0; i<dealer.getCardsArrayList().size(); i++){
-          Card c = dealer.getCardsArrayList().get(i);
-          c.draw(g2, this, x, 2*y);
-          x+=30;
-        }
-        x = getWidth()/7;
-        //display who won
-        g2.drawString(winStatus, x, (3*y)-100);
+        if(playerTurn == false){
+          x = getWidth()/7;
+          g2.drawString("Dealer's Score: " + dealer.getScore(), x, (2*y)-20);
+          //for(Card c: dealer.getCardsArrayList()){
+          for(int i=0; i<dealer.getCardsArrayList().size(); i++){
+            Card c = dealer.getCardsArrayList().get(i);
+            c.draw(g2, this, x, 2*y);
+            x+=30;
+          }
+          x = getWidth()/7;
+          //display who won
+          g2.drawString(winStatus, x, (3*y)-100);
 
-      }
-      //if it is the players turn, show the dealers first card and
-      //corresponding score.
-      else{
-        x = getWidth()/7;
-        g2.drawString("Dealer's Score: " + dealer.getStartScore(), x, (2*y)-20);
-        dealer.getCardsArrayList().get(0).draw(g2, this, x, 2*y);
+        }
+        //if it is the players turn, show the dealers first card and
+        //corresponding score.
+        else{
+          x = getWidth()/7;
+          g2.drawString("Dealer's Score: " + dealer.getStartScore(), x, (2*y)-20);
+          dealer.getCardsArrayList().get(0).draw(g2, this, x, 2*y);
+        }
       }
 
       g2.drawString("Player Wins: " + playerWinCount, x, (3*y)-60);

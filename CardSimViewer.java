@@ -48,7 +48,7 @@ public class CardSimViewer {
     frame.add(panel);
 
 */
-    
+
 
     //button code
 

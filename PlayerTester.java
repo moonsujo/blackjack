@@ -10,6 +10,9 @@ public class PlayerTester {
     System.out.println("player's score1 [exp: 0]: " + player.getScore());
     System.out.println("player's hand [exp: empty arrayList]: " + player.getCards());
 
+    //draw one card
+    //
+
 
     CardSimComponent simComponent = new CardSimComponent();
 
@@ -22,6 +25,4 @@ public class PlayerTester {
 
   }
 
-}
-
- */
+} */

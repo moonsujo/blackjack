@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-//import java.util.Dictionary<K,V>;
+
 import javax.swing.ImageIcon;
 import java.net.URL;
 
@@ -12,7 +12,7 @@ public class Player{
     private int startCount;
 
     private int[] scoreKey = {1,2,3,4,5,6,7,8,9,10,10,10,10};
-    //private String stringKey = {"Ace","2","3","4","5","6","7","8","9","10","Jack","Queen","King"};
+
     private String faces = "a23456789tjqk";
     private String suites = "shdc";
 
@@ -29,8 +29,6 @@ public class Player{
       aceCount = 0;
       score1 = 0;
       hand = new ArrayList<Card>();
-
-
     }
 
     public ArrayList<String> getStringCards(){
@@ -79,8 +77,8 @@ public class Player{
 
       String imagePath = "cards/" + faces.charAt(cardDrawn) + suites.charAt(suiteDrawn) + ".gif";
 
-
-      stringCards.add(imagePath);
+      String cardPath = String.valueOf(faces.charAt(cardDrawn)) + String.valueOf(suites.charAt(suiteDrawn));
+      stringCards.add(cardPath);
       int cardValue = scoreKey[cardDrawn];
       //save the value of the beginning card
       if(score == 0){
