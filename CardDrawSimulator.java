@@ -35,20 +35,7 @@ public class CardDrawSimulator {
       //create a generator that will give us our random number associated with a coinflip
 
       generator = new Random();
-      //shdc
-      /*int[] aces = {1, 1, 1, 1};
-      int[] twos = {1, 1, 1, 1};
-      int[] threes = {1, 1, 1, 1};
-      int[] fours = {1, 1, 1, 1};
-      int[] fives = {1, 1, 1, 1};
-      int[] sixes = {1, 1, 1, 1};
-      int[] sevens = {1, 1, 1, 1};
-      int[] eights = {1, 1, 1, 1};
-      int[] nines = {1, 1, 1, 1};
-      int[] tens = {1, 1, 1, 1};
-      int[] jacks = {1, 1, 1, 1};
-      int[] queens = ;
-      int[] kings = ;*/
+
       deck = new int[13][4];
       for (int i = 0; i < 13; i++) {
         for (int j = 0; j < 4; j++) {
@@ -56,34 +43,6 @@ public class CardDrawSimulator {
         }
       }
       totalCardCount = 52;
-      /*aceCount=4; //1
-      twoCount=4; //2
-      threeCount=4;  //3
-      fourCount=4; ///4
-      fiveCount=4;//5
-      sixCount=4; //6
-      sevenCount=4; //7
-      eightCount=4; //8
-      nineCount=4; //9
-      tenCount=4; //10
-      jackCount=4; //11
-      queenCount=4; //12
-      kingCount=4; //13
-
-      deck[0]=aceCount;
-      deck[1]=twoCount;
-      deck[2]=threeCount;
-      deck[3]=fourCount;
-      deck[4]=fiveCount;
-      deck[5]=sixCount;
-      deck[6]=sevenCount;
-      deck[7]=eightCount;
-      deck[8]=nineCount;
-      deck[9]=tenCount;
-      deck[10]=jackCount;
-      deck[11]=queenCount;
-      deck[12]=kingCount;*/
-      //deck = {aceCount, twoCount, threeCount, fourCount, fiveCount, sixCount, sevenCount, eightCount, nineCount, tenCount, jackCount, queenCount, kingCount};
 
    }
 
@@ -134,61 +93,6 @@ public class CardDrawSimulator {
      }
      return suiteCount;
    }
-   /*
-   public int aceCount() {
-
-      return deck[0];
-   }
-
-   public int twoCount() {
-      return deck[1];
-   }
-
-   public int threeCount() {
-      return deck[2];
-   }
-
-   public int fourCount() {
-	  return deck[3];
-   }
-
-   public int fiveCount() {
-	  return deck[4];
-   }
-
-   public int sixCount() {
-	  return deck[5];
-   }
-
-   public int sevenCount() {
-      return deck[6];
-   }
-
-   public int eightCount() {
-	  return deck[7];
-   }
-
-   public int nineCount() {
-	  return deck[8];
-   }
-
-   public int tenCount() {
-      return deck[9];
-   }
-
-   public int jackCount() {
-	  return deck[10];
-   }
-
-   public int queenCount() {
-	  return deck[11];
-   }
-
-   public int kingCount() {
-    return deck[12];
-   }
-
-*/
 
 
    public int getNumCardsLessThan(int value) {
@@ -212,38 +116,6 @@ public class CardDrawSimulator {
     */
    public void reset()
    {
-      //reseting all private member variables
-      /*totalCardCount = 52;
-      aceCount=4;
-      twoCount=4;
-      threeCount=4;
-      fourCount=4;
-      fiveCount=4;
-      sixCount=4;
-      sevenCount=4;
-      eightCount=4;
-      nineCount=4;
-      tenCount=4;
-      jackCount=4;
-      queenCount=4;
-      kingCount=4;
-
-      deck[0]=aceCount;
-      deck[1]=twoCount;
-      deck[2]=threeCount;
-      deck[3]=fourCount;
-      deck[4]=fiveCount;
-      deck[5]=sixCount;
-      deck[6]=sevenCount;
-      deck[7]=eightCount;
-      deck[8]=nineCount;
-      deck[9]=tenCount;
-      deck[10]=jackCount;
-      deck[11]=queenCount;
-      deck[12]=kingCount;*/
-
-
-
 
       for (int i = 0; i < 13; i++) {
         for (int j = 0; j < 4; j++) {
