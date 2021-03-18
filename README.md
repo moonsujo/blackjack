@@ -1,2 +1,2 @@
-# Dice-Simulator
-A simulation of two dice being thrown. Results of the sum of both die are displayed along with the number of doubles incurred.
+# Blackjack
+Play against the dealer. Get the upper hand by consulting the probability calculator that shows the likelihood of your next card leading to a bust.
